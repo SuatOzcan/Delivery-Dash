@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 
 public class Driver : MonoBehaviour
 {
-    [SerializeField]float _steerSpeed = 1.0f;
-    [SerializeField]float _moveSpeed = 0.1f;
+    [SerializeField]float _steerSpeed = 70f;
+    [SerializeField]float _moveSpeed = 7f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -46,8 +46,11 @@ public class Driver : MonoBehaviour
             steer = 1.0f;
         }
 
-        // Rotation works with the left-hand rule.
-        transform.Rotate(0f,0f,steer * _steerSpeed);
-        transform.Translate(0f, speed * _moveSpeed, 0f);
+        float moveAmount = speed * _moveSpeed * Time.deltaTime;
+        float steerAmount = steer * _steerSpeed * Time.deltaTime;
+        
+        // Rotation mechanism works with the left-hand rule.
+        transform.Rotate(0f, 0f, steerAmount);
+        transform.Translate(0f, moveAmount, 0f);
     }
 }
