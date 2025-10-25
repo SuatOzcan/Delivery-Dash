@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6615386275977392149}
   - component: {fileID: 6476122687362881791}
-  - component: {fileID: 5446226171344532026}
   - component: {fileID: 8791243549020600453}
   m_Layer: 0
-  m_Name: pickupitem_0
+  m_Name: Package
   m_TagString: Package
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,18 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5446226171344532026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6076862840221819049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb9cbc6411fb8484c9820ea63d34eb27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Collision
 --- !u!61 &8791243549020600453
 BoxCollider2D:
   m_ObjectHideFlags: 0
