@@ -1,10 +1,12 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Driver : MonoBehaviour
 {
-    [SerializeField]float _steerSpeed = 70f;
-    [SerializeField]float _moveSpeed = 7f;
+    [SerializeField]float _steerSpeed = 110f;
+    [SerializeField] public float _moveSpeed = 7f;
+    [SerializeField] public float _boostSpeed = 3f; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,20 +32,35 @@ public class Driver : MonoBehaviour
             //transform.Translate(Vector2.down * _moveSpeed);
             speed = -1.0f;
         }
-        if(Keyboard.current.dKey.isPressed)
+        if (Keyboard.current.dKey.isPressed)
         {
             //Debug.Log("We are going to the right!");
             //transform.Translate(Vector2.right * _moveSpeed);
             //transform.Rotate(new Vector3(0, 0, -_steerSpeed));
-            steer = -1.0f;
+            steer = -2.0f;
         }
-        else if(Keyboard.current.aKey.isPressed)
+        else if (Keyboard.current.aKey.isPressed)
         {
             //Debug.Log("We are going to the left!");
             //transform.Translate(Vector2.left * _moveSpeed);
             //transform.Rotate(new Vector3(0, 0, _steerSpeed));
+            steer = 2.0f;
+        }
+
+        if (Keyboard.current.aKey.IsPressed() &&
+        (Keyboard.current.wKey.IsPressed() || Keyboard.current.sKey.IsPressed()))
+
+        {
             steer = 1.0f;
         }
+
+        else if (Keyboard.current.dKey.IsPressed() &&
+        (Keyboard.current.wKey.IsPressed() || Keyboard.current.sKey.IsPressed()))
+
+        {
+            steer = -1.0f;
+        }
+        
 
         float moveAmount = speed * _moveSpeed * Time.deltaTime;
         float steerAmount = steer * _steerSpeed * Time.deltaTime;

@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -6,14 +7,20 @@ public class Delivery : MonoBehaviour
 {
     string _packageTag = "Package";
     string _customerTag = "Customer";
+    string _boostTag = "Boost";
     bool _hasPackage;
+    private bool _isBoosted;
 
     [SerializeField]
     ParticleSystem _particle;
 
     [SerializeField]
     float _destroyDelay = 0.5f;
-
+    [SerializeField]
+    float _boostSpeed;
+    
+    [SerializeField]
+    Driver _driverScript;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,6 +37,22 @@ public class Delivery : MonoBehaviour
             Debug.Log("The package has been delivered to the customer!");
             _particle.Stop();
             _hasPackage = false;
+        }
+
+        else if (collision.CompareTag(_boostTag) && _isBoosted == false)
+        {
+            _driverScript._moveSpeed += _driverScript._boostSpeed;
+            _isBoosted = true;
+            Destroy(collision.gameObject, _destroyDelay);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (_isBoosted == true)
+        {
+            _driverScript._moveSpeed -= _driverScript._boostSpeed;
+            _isBoosted = false;
         }
     }
 }
