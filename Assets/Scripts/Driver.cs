@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 public class Driver : MonoBehaviour
 {
-    [SerializeField] float _steerSpeed = 110f;
-    [SerializeField] public float _moveSpeed = 7f;
-    [SerializeField] public float _boostSpeed = 3f; 
+    [SerializeField] float _steerSpeed = 120f;
+    [SerializeField] public float _moveSpeed = 6f;
+    [SerializeField] public float _boostSpeed = 1.5f; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
