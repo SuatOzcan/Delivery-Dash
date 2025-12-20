@@ -39,6 +39,7 @@ public class Delivery : MonoBehaviour
             Debug.Log("The package has been delivered to the customer!");
             _particle.Stop();
             _hasPackage = false;
+            Destroy(collision.gameObject, _destroyDelay);
         }
 
         else if (collision.CompareTag(_boostTag) && _isBoosted == false)
