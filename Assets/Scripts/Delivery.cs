@@ -22,6 +22,8 @@ public class Delivery : MonoBehaviour
     [SerializeField]
     Driver _driverScript;
 
+    [SerializeField] TMP_Text _boostText;
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(_packageTag) && _hasPackage == false)
@@ -43,6 +45,7 @@ public class Delivery : MonoBehaviour
         {
             _driverScript._moveSpeed += _driverScript._boostSpeed;
             _isBoosted = true;
+            _boostText.gameObject.SetActive(true);
             Destroy(collision.gameObject, _destroyDelay);
         }
     }
@@ -53,6 +56,7 @@ public class Delivery : MonoBehaviour
         {
             _driverScript._moveSpeed -= _driverScript._boostSpeed;
             _isBoosted = false;
+            _boostText.gameObject.SetActive(false);
         }
     }
 }

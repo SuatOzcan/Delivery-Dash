@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8847657546493586177}
   - component: {fileID: 1725558018750737520}
+  - component: {fileID: 1863046835490098863}
   - component: {fileID: 1801955515850977596}
   - component: {fileID: 1433190721039064126}
-  - component: {fileID: 1863046835490098863}
   - component: {fileID: 6024280416952002558}
   - component: {fileID: 5235455633517565028}
   m_Layer: 0
@@ -52,6 +52,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Driver
   _steerSpeed: 70
   _moveSpeed: 7
+  _boostSpeed: 3
+--- !u!114 &1863046835490098863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7778771296901082688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9cbc6411fb8484c9820ea63d34eb27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Collision
+  _particle: {fileID: 6024280416952002558}
+  _destroyDelay: 0.5
+  _boostSpeed: 3
+  _driverScript: {fileID: 1725558018750737520}
+  _boostText: {fileID: 0}
 --- !u!50 &1801955515850977596
 Rigidbody2D:
   serializedVersion: 5
@@ -125,22 +143,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.47320703, y: 1.076117}
   m_EdgeRadius: 0
---- !u!114 &1863046835490098863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7778771296901082688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb9cbc6411fb8484c9820ea63d34eb27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Collision
-  _particle: {fileID: 6024280416952002558}
-  _destroyDelay: 0.5
-  _boostSpeed: 3
-  _driverScript: {fileID: 1725558018750737520}
 --- !u!198 &6024280416952002558
 ParticleSystem:
   m_ObjectHideFlags: 0

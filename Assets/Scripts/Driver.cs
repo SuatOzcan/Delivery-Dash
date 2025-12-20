@@ -1,10 +1,11 @@
 using JetBrains.Annotations;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Driver : MonoBehaviour
 {
-    [SerializeField]float _steerSpeed = 110f;
+    [SerializeField] float _steerSpeed = 110f;
     [SerializeField] public float _moveSpeed = 7f;
     [SerializeField] public float _boostSpeed = 3f; 
 
