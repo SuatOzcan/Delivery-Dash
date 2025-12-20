@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,8 +11,9 @@ public class Delivery : MonoBehaviour
     string _boostTag = "Boost";
     bool _hasPackage;
     private bool _isBoosted;
-
-    [SerializeField]
+    [SerializeField] 
+    List<GameObject> _customersList;
+    [SerializeField] 
     ParticleSystem _particle;
 
     [SerializeField]
@@ -23,6 +25,7 @@ public class Delivery : MonoBehaviour
     Driver _driverScript;
 
     [SerializeField] TMP_Text _boostText;
+    [SerializeField] TMP_Text _winText;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,7 +34,7 @@ public class Delivery : MonoBehaviour
             Debug.Log("We picked it up!");
             _particle.Play();
             _hasPackage = true;
-            Destroy(collision.GameObject(), _destroyDelay);
+            Destroy(collision.gameObject, _destroyDelay);
 
         }
         else if (collision.CompareTag(_customerTag) && _hasPackage)
@@ -40,6 +43,11 @@ public class Delivery : MonoBehaviour
             _particle.Stop();
             _hasPackage = false;
             Destroy(collision.gameObject, _destroyDelay);
+            _customersList.Remove(collision.gameObject);
+            if (_customersList.Count == 0)
+            {
+                _winText.gameObject.SetActive(true);
+            }
         }
 
         else if (collision.CompareTag(_boostTag) && _isBoosted == false)
